@@ -9,9 +9,14 @@ public class BulbSwitcher : InteractiveObject
 
     [SerializeField]
     private GameObject parent;
+
+    [SerializeField]
+    public bool isActive;
     
     public override void activate(GameObject activator)
     {
+        isActive = !isActive;
+        
         switch (switchNumber)
         {
             case 1:
@@ -22,6 +27,12 @@ public class BulbSwitcher : InteractiveObject
                 break;
             case 3:
                 parent.GetComponent<LightBulbsPuzzle>().thirdSwitch();
+                break;
+            case 4:
+                parent.GetComponent<LightBulbsPuzzle>().switchElectricity();
+                break;
+            case 5:
+                //parent.GetComponent<LightBulbsPuzzle>().switchFourthBulb();
                 break;
         }
         
