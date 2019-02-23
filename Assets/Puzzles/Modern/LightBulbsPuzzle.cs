@@ -16,6 +16,8 @@ public class LightBulbsPuzzle : MonoBehaviour
     [SerializeField]
     private float electricityPowerOnFactor = 0.2f;
     [SerializeField]
+    private float electricityPowerOffFactor = 0.8f;
+    [SerializeField]
     private float t = 0;
     [SerializeField] 
     private bool isElectricityOn = false;
@@ -50,7 +52,7 @@ public class LightBulbsPuzzle : MonoBehaviour
     void TestingOnKeykodes()
     {
         
-        Debug.Log("keycode");
+//        Debug.Log("keycode");
         if (Input.GetKeyDown(KeyCode.U))
         {
             firstSwitch();
@@ -68,8 +70,6 @@ public class LightBulbsPuzzle : MonoBehaviour
         {
             isElectricityOn = !isElectricityOn;
         }
-
-        t = 0;
 
     }
     
@@ -116,18 +116,38 @@ public class LightBulbsPuzzle : MonoBehaviour
         Debug.Log("light 3 is" + socketList[3].IsLighBulbOn);
     }
 
+
+    void checkAllSocketsForWin()
+    {
+        foreach (var socket in socketList)
+        {
+            if (!socket.IsLighBulbOn || !socket.IsBulbInSocket)
+            {
+                return;
+            }
+        }
+        
+        //TODO: what when done?
+        
+        Debug.Log("win");
+    }
+    
+    
     // Update is called once per frame
     void Update()
     {
         
         TestingOnKeykodes();
-        Debug.Log("update");
+//        Debug.Log("update");
         
         foreach (var socket in socketList)
         {
+            t = 0;
+            
             if (!socket.IsBulbInSocket)
             {
                 targetColor = colorOff;
+                t += Time.deltaTime / electricityPowerOffFactor;
             }
             else
             {
@@ -136,21 +156,25 @@ public class LightBulbsPuzzle : MonoBehaviour
                     if (socket.IsLighBulbOn)
                     {
                         targetColor = colorOn;
+                        t += Time.deltaTime / electricityPowerOnFactor;
                     }
                     else
                     {
                         targetColor = colorOff;
+                        t += Time.deltaTime / electricityPowerOffFactor;
                     }
                 }
                 else
                 {
                     targetColor = colorOff;
+                    t += Time.deltaTime / electricityPowerOffFactor;
                 }
             }
-
-            t += Time.deltaTime / electricityPowerOnFactor;
+            
             socket.BulbGameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(socket.BulbGameObject.GetComponent<SpriteRenderer>().color,targetColor,t);
 
         }
+
+        checkAllSocketsForWin();
     }
 }
