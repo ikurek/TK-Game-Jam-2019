@@ -17,8 +17,11 @@ public class PlayerCharacter : MonoBehaviour {
 	
 	private new Collider2D collider;
 	private MovementDirection movementDirection = MovementDirection.None;
+    private Animator animator;
 	
 	private void Awake() {
+        animator = GetComponent<Animator>();
+
 		collider = GetComponent<Collider2D>();
 		if (collider == null) {
 			Debug.LogError("No Collider2D found in Player Character");
@@ -60,6 +63,26 @@ public class PlayerCharacter : MonoBehaviour {
 	
 	private void startMovement(MovementDirection direction) {
 		movementDirection |= direction;
+
+        switch(direction)
+        {
+            case MovementDirection.East:
+                animator.SetTrigger("PlayerSE");
+                break;
+
+            case MovementDirection.North:
+                animator.SetTrigger("PlayerN");
+                break;
+
+            case MovementDirection.West:
+                animator.SetTrigger("PlayerSW");
+                break;
+
+            case MovementDirection.South:
+                animator.SetTrigger("PlayerS");
+                break;
+        }
+
 	}
 	
 	private void stopMovement(MovementDirection direction) {

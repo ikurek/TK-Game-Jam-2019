@@ -15,6 +15,12 @@ public class PlayerUIPrompts : MonoBehaviour
     [SerializeField]
     private float playerPromptOffsetX = 0;
     
+    [SerializeField]
+    private float playerPromptHoldOffsetY = 0;
+    
+    [SerializeField]
+    private float playerPromptHoldOffsetX = 0;
+    
     
     private PlayerObjectInteractionScript playerInteraction;
     
@@ -43,7 +49,7 @@ public class PlayerUIPrompts : MonoBehaviour
         if (playerInteraction.heldObject!=null)
         {
             PutPrompt.SetActive(true);
-            PutPrompt.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(playerPromptOffsetX,playerPromptOffsetY,0));
+            PutPrompt.transform.position = Camera.main.WorldToScreenPoint(transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,0));
         }
         else
         {

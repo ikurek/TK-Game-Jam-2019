@@ -1300,7 +1300,9 @@ MonoBehaviour:
   UpPrompt: {fileID: 683373565}
   PutPrompt: {fileID: 737473407}
   playerPromptOffsetY: 2.7
-  playerPromptOffsetX: -0.15
+  playerPromptOffsetX: -0.17
+  playerPromptHoldOffsetY: 4.7
+  playerPromptHoldOffsetX: -0.17
 --- !u!1001 &2029497390
 PrefabInstance:
   m_ObjectHideFlags: 0
