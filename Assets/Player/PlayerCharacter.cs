@@ -43,6 +43,7 @@ public class PlayerCharacter : MonoBehaviour {
 		
 		/******************************************
 		 * This here is magic that fixes Unity's bullshit collision detection
+		 * Not really, it's still fucked >:D
 		 */
 		RaycastHit2D[] hits = new RaycastHit2D[64];
 		int numHits = collider.Cast(move.normalized, hits, move.magnitude);
