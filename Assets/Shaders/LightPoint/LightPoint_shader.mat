@@ -21,10 +21,10 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Vector1_A435599C: 0.01
-    - Vector1_DECBA3D6: -2.88
+    - Vector1_DECBA3D6: -3
     - Vector1_E3E22DBC: 20
     m_Colors:
-    - Vector2_3E6974E6: {r: -4.433939, g: -0.68257815, b: 0, a: 0}
+    - Vector2_3E6974E6: {r: 1.4961463, g: -6.8439436, b: 0, a: 0}
     - Vector2_5B8641B: {r: 0.5, g: 0.5, b: 0, a: 0}
     - Vector2_C41B40B8: {r: -0.4544309, g: 0.35255247, b: 0.14550781, a: 0}
     - _TargetPosition: {r: -1.26, g: -0.35, b: 0.14550781, a: 0}
