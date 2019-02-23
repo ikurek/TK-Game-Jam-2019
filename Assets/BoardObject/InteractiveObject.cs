@@ -17,18 +17,20 @@ public class InteractiveObject: MonoBehaviour
         isActivated = true;
     }
 
-    public virtual void pickup(GameObject parentGameObject) {
+    public virtual GameObject pickup(GameObject parentGameObject) {
         gameObject.GetComponent<Collider2D>().enabled = false;
         setNewPositionAbovePlayer(parentGameObject);
         gameObject.transform.SetParent(parentGameObject.transform);
         print("Picked up " + gameObject.name);
+        return this.gameObject;
     }
 
-    public virtual void drop(GameObject exParentGameObject) {
+    public virtual GameObject drop(GameObject exParentGameObject) {
         setNewPositionBelowPlayer(exParentGameObject);
         gameObject.transform.SetParent(null);
         gameObject.GetComponent<Collider2D>().enabled = true;
         print("Dropped " + gameObject.name);
+        return this.gameObject;
     }
     
     private void setNewPositionAbovePlayer(GameObject playerGameObject)
@@ -37,7 +39,7 @@ public class InteractiveObject: MonoBehaviour
         float playerSize = playerGameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         float playerTop = playerCenter + playerSize / 2;
         
-        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerTop + 0.2f);
+        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerTop + 0.5f);
     }
 
     private void setNewPositionBelowPlayer(GameObject playerGameObject)
@@ -46,7 +48,7 @@ public class InteractiveObject: MonoBehaviour
         float playerSize = playerGameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         float playerBottom = playerCenter - playerSize / 2;
         
-        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerBottom - 0.2f);
+        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerBottom - 1f);
     }
 
     public virtual void playSound(string soundPath)
