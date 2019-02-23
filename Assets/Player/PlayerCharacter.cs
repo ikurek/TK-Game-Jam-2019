@@ -65,22 +65,24 @@ public class PlayerCharacter : MonoBehaviour {
 	private void startMovement(MovementDirection direction) {
 		movementDirection |= direction;
 
+        animator.SetBool("IsPlayerMoving", true);
+
         switch(direction)
         {
             case MovementDirection.East:
-                animator.SetTrigger("PlayerSE");
+                animator.SetBool("PlayerSE", true);
                 break;
 
             case MovementDirection.North:
-                animator.SetTrigger("PlayerN");
+                animator.SetBool("PlayerN", true);
                 break;
 
             case MovementDirection.West:
-                animator.SetTrigger("PlayerSW");
+                animator.SetBool("PlayerSW", true);
                 break;
 
             case MovementDirection.South:
-                animator.SetTrigger("PlayerS");
+                animator.SetBool("PlayerS", true);
                 break;
         }
 
@@ -88,7 +90,28 @@ public class PlayerCharacter : MonoBehaviour {
 	
 	private void stopMovement(MovementDirection direction) {
 		movementDirection &= ~direction;
-	}
+
+        animator.SetBool("IsPlayerMoving", false);
+
+        switch (direction)
+        {
+            case MovementDirection.East:
+                animator.SetBool("PlayerSE", false);
+                break;
+
+            case MovementDirection.North:
+                animator.SetBool("PlayerN", false);
+                break;
+
+            case MovementDirection.West:
+                animator.SetBool("PlayerSW", false);
+                break;
+
+            case MovementDirection.South:
+                animator.SetBool("PlayerS", false);
+                break;
+        }
+    }
 	
 	private Vector2 directionVector(MovementDirection direction) {
 		Vector2 vec = Vector2.zero;
