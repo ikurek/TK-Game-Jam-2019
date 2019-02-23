@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractiveObjectScript : MonoBehaviour, IInteractiveObject
 {
 
+    private AudioClip sound;
+
     public void activate(GameObject activator) {
         print("Activated " + gameObject.name);
     }
@@ -13,6 +15,7 @@ public class InteractiveObjectScript : MonoBehaviour, IInteractiveObject
         gameObject.GetComponent<Collider2D>().enabled = false;
         setNewPositionAbovePlayer(parentGameObject);
         gameObject.transform.SetParent(parentGameObject.transform);
+        playSound("Sound/pick_wood");
         print("Picked up " + gameObject.name);
     }
 
@@ -20,6 +23,7 @@ public class InteractiveObjectScript : MonoBehaviour, IInteractiveObject
         setNewPositionBelowPlayer(exParentGameObject);
         gameObject.transform.SetParent(null);
         gameObject.GetComponent<Collider2D>().enabled = true;
+        playSound("Sound/drop_wood");
         print("Dropped " + gameObject.name);
     }
 
@@ -39,5 +43,11 @@ public class InteractiveObjectScript : MonoBehaviour, IInteractiveObject
         float playerBottom = playerCenter - playerSize / 2;
         
         gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerBottom);
+    }
+
+    private void playSound(string soundPath)
+    {
+        sound = Resources.Load<AudioClip>(soundPath);
+        gameObject.GetComponent<AudioSource>().PlayOneShot(sound, 1.0f);
     }
 }

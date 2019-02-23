@@ -46,7 +46,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
 
     void activateLastCollidedInteractive()
     {
-        print("ActivateLastCollidedInteractive with " + lastCollidedInteractive.name);
+        
         if(isTouchingInteractive) {
             IInteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
