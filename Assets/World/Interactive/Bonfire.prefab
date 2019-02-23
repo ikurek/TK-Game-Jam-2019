@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fire: {fileID: 4170863893405049437}
-  pickable: 0
+  pickable: 1
 --- !u!1001 &3825755990960972407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -451,12 +451,12 @@ PrefabInstance:
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.47
+      value: -3.0900002
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -0.76
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
@@ -466,22 +466,22 @@ PrefabInstance:
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.29074958
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.95679927
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -33.806
       objectReference: {fileID: 0}
     - target: {fileID: 6590160258457467118, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
@@ -524,13 +524,7 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4885784495627847923, guid: 04e18efabbc9445009d2d7c434f8c72b,
-        type: 3}
-      propertyPath: fire
-      value: 
-      objectReference: {fileID: 4170863893405049437}
-    m_RemovedComponents:
-    - {fileID: 7476863197353510870, guid: 04e18efabbc9445009d2d7c434f8c72b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04e18efabbc9445009d2d7c434f8c72b, type: 3}
 --- !u!1 &907198763323049756 stripped
 GameObject:
