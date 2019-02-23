@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IInteractiveObject
 {
-    void activate();
+    void activate(GameObject activator);
 
-    void pickup(Transform parent);
+    void pickup(GameObject parent);
 
-    void drop();
+    void drop(GameObject exParent);
 }

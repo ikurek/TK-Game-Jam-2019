@@ -18,26 +18,27 @@ public class PlayerObjectInteractionScript : MonoBehaviour
             activateLastCollidedInteractive();
         });
 
-        inputDispatcher.AddKeyDownHandler(KeyCode.F, (KeyCode) => {
-            pickupLastCollidedInteractive();
+        inputDispatcher.AddKeyDownHandler(KeyCode.Return, (KeyCode) => {
+            if(heldObject == null) {
+                pickupLastCollidedInteractive();
+            } else {
+                dropLastCollidedinteractive();
+            }
         });
     }
 
-    void Update()
+    void OnCollisionEnter2D(Collision2D collision) 
     {
-
-    }
-
-    void OnCollisionEnter(Collision collision) 
-    {
+        print("OnCollisionEnter with " + collision.gameObject.name);
         if(collision.gameObject.tag == interactiveTag) {
             isTouchingInteractive = true;
             lastCollidedInteractive = collision.gameObject;
         }
     }
  
-    void OnCollisionExit(Collision collision) 
+    void OnCollisionExit2D(Collision2D collision) 
     {
+        print("OnCollisionExit with " + collision.gameObject.name);
         if(collision.gameObject.tag == interactiveTag) {
             isTouchingInteractive = false;
         }
@@ -45,10 +46,11 @@ public class PlayerObjectInteractionScript : MonoBehaviour
 
     void activateLastCollidedInteractive()
     {
+        print("ActivateLastCollidedInteractive with " + lastCollidedInteractive.name);
         if(isTouchingInteractive) {
             IInteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
-                interactive.activate();
+                interactive.activate(gameObject);
             }
         }
 
@@ -59,7 +61,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject == null && isTouchingInteractive) {
             IInteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
-                interactive.pickup(gameObject.transform);
+                interactive.pickup(gameObject);
                 heldObject = lastCollidedInteractive;
             }
         }
@@ -70,7 +72,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject != null) {
             IInteractiveObject interactive = heldObject.GetComponent<InteractiveObjectScript>() as IInteractiveObject;
             if(interactive != null) {
-                interactive.drop();
+                interactive.drop(gameObject);
                 heldObject = null;
             }
         }
