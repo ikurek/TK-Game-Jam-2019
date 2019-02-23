@@ -38,7 +38,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.585185, y: 4.5925927}
+    oldSize: {x: 4.9185185, y: 3.4074075}
     newSize: {x: 7.585185, y: 4.5925927}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -422,6 +422,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8310689842938801277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907198763323049756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf59f7cd9f5648508eb6bd04b8a1f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fire: {fileID: 4170863893405049437}
+  pickable: 0
 --- !u!1001 &3825755990960972407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,7 +529,8 @@ PrefabInstance:
       propertyPath: fire
       value: 
       objectReference: {fileID: 4170863893405049437}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7476863197353510870, guid: 04e18efabbc9445009d2d7c434f8c72b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04e18efabbc9445009d2d7c434f8c72b, type: 3}
 --- !u!1 &907198763323049756 stripped
 GameObject:
