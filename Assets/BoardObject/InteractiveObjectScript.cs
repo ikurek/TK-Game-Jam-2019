@@ -19,4 +19,16 @@ public class InteractiveObjectScript : MonoBehaviour, IInteractiveObject
     public void activate() {
         print("Activated");
     }
+
+    public void pickup(Transform parent) {
+        gameObject.transform.SetParent(parent);
+        gameObject.SetActive(false);
+        print("Picked up");
+    }
+
+    public void drop() {
+        gameObject.transform.SetParent(null);
+        gameObject.SetActive(true);
+        print("Dropped");
+    }
 }
