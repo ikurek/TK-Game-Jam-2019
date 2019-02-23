@@ -8,6 +8,7 @@ namespace Shaders.LightPoint
         [SerializeField] Material material;
 
         [SerializeField] private Transform target;
+        [SerializeField] private float size = -1f;//Bigger if more on negative
         
 //        [SerializeField] private float timeScale;
 //        [SerializeField] private float transformTimeScale = 0.05f;
@@ -26,11 +27,19 @@ namespace Shaders.LightPoint
 //                material.SetFloat("Vector1_A435599C", transformTimeScale);
         }
 
+        public void setSizeOfPointLight(float new_size)
+        {
+            size = new_size;
+        }
+        
         // Update is called once per frame
         void Update()
         {
             if(material.HasProperty("Vector2_3E6974E6"))
                 material.SetVector("Vector2_3E6974E6", target.position);
+            
+            if(material.HasProperty("Vector1_DECBA3D6"))
+                material.SetFloat("Vector1_DECBA3D6", size);
         }
     }
 }
