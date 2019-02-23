@@ -37,7 +37,7 @@ public class InteractiveObject: MonoBehaviour
         float playerSize = playerGameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         float playerTop = playerCenter + playerSize / 2;
         
-        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerTop);
+        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerTop + 0.2f);
     }
 
     private void setNewPositionBelowPlayer(GameObject playerGameObject)
@@ -46,7 +46,7 @@ public class InteractiveObject: MonoBehaviour
         float playerSize = playerGameObject.GetComponent<SpriteRenderer>().bounds.size.y;
         float playerBottom = playerCenter - playerSize / 2;
         
-        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerBottom);
+        gameObject.transform.position = new Vector3(playerGameObject.transform.position.x, playerBottom - 0.2f);
     }
 
     public virtual void playSound(string soundPath)

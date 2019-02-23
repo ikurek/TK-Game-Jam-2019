@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BonfireScript : InteractiveObject
+public class TypewriterScript : InteractiveObject
 {
-    public bool pickable = false;
+    public bool pickable = true;
     
+    public override void activate(GameObject activator)
+    {
+        base.playSound("Sound/typewriter_typing");
+        base.activate(activator);
+    }
+
     public override void pickup(GameObject parentGameObject)
     {
         if (pickable)
@@ -19,7 +25,7 @@ public class BonfireScript : InteractiveObject
     {
         if (pickable)
         {
-            base.playSound("Sound/drop_wood");
+            base.playSound("Sound/typewriter_drop");
             base.drop(exParentGameObject);
         }
     }
