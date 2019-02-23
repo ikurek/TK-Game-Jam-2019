@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BonfireScript : InteractiveObject
 {
+
+    [SerializeField] private ParticleSystem fire;
+
     public override void pickup(GameObject parentGameObject)
     {
         base.playSound("Sound/pick_wood");
@@ -18,6 +21,10 @@ public class BonfireScript : InteractiveObject
 
     public override void activate(GameObject activator)
     {
-        base.activate(activator);
+        //base.activate(activator);
+        //Debug.Log("asdad");
+
+        fire.gameObject.SetActive(true);
+
     }
 }
