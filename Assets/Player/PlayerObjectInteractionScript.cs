@@ -6,9 +6,9 @@ using World;
 public class PlayerObjectInteractionScript : MonoBehaviour
 {
     string interactiveTag = "interactive";
-    bool isTouchingInteractive = false;
-    GameObject lastCollidedInteractive = null;
-    GameObject heldObject = null;
+    public bool isTouchingInteractive = false;
+    public GameObject lastCollidedInteractive = null;
+    public GameObject heldObject = null;
 
     void Start()
     {
