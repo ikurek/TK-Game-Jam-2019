@@ -36,23 +36,35 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         });
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        print("OnTriggerEnter with " + other.gameObject.name);
+        isTouchingAnything = true;
+        if(other.gameObject.tag == interactiveTag) {
+            isTouchingInteractive = true;
+            lastCollidedInteractive = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        print("OnTriggerExit with " + other.gameObject.name);
+        isTouchingAnything = false;
+        if(other.gameObject.tag == interactiveTag) {
+            isTouchingInteractive = false;
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D collision) 
     {
         print("OnCollisionEnter with " + collision.gameObject.name);
-        isTouchingAnything = true;
-        if(collision.gameObject.tag == interactiveTag) {
-            isTouchingInteractive = true;
-            lastCollidedInteractive = collision.gameObject;
-        }
+
     }
  
     void OnCollisionExit2D(Collision2D collision) 
     {
         print("OnCollisionExit with " + collision.gameObject.name);
-        isTouchingAnything = false;
-        if(collision.gameObject.tag == interactiveTag) {
-            isTouchingInteractive = false;
-        }
+
     }
 
     void activateLastCollidedInteractive()
