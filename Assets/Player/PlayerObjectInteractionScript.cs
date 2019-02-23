@@ -16,6 +16,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         
         inputDispatcher.AddKeyDownHandler(KeyCode.Space, (KeyCode) => {
             activateLastCollidedInteractive();
+            GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
         });
 
         inputDispatcher.AddKeyDownHandler(KeyCode.Return, (KeyCode) => {
@@ -24,6 +25,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
             } else {
                 dropLastCollidedinteractive();
             }
+            GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
         });
     }
 
@@ -45,10 +47,9 @@ public class PlayerObjectInteractionScript : MonoBehaviour
     }
 
     void activateLastCollidedInteractive()
-    {
-        
+    {        
         if(isTouchingInteractive) {
-            IInteractiveObject interactive = getLastCollidedInteractive();
+            InteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
                 interactive.activate(gameObject);
             }
@@ -59,7 +60,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
     void pickupLastCollidedInteractive()
     {
         if(heldObject == null && isTouchingInteractive) {
-            IInteractiveObject interactive = getLastCollidedInteractive();
+            InteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
                 interactive.pickup(gameObject);
                 heldObject = lastCollidedInteractive;
@@ -70,7 +71,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
     void dropLastCollidedinteractive()
     {
         if(heldObject != null) {
-            IInteractiveObject interactive = heldObject.GetComponent<InteractiveObjectScript>() as IInteractiveObject;
+            InteractiveObject interactive = heldObject.GetComponent<InteractiveObject>() as InteractiveObject;
             if(interactive != null) {
                 interactive.drop(gameObject);
                 heldObject = null;
@@ -78,7 +79,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         }
     }
 
-    private IInteractiveObject getLastCollidedInteractive() {
-        return lastCollidedInteractive.GetComponent<InteractiveObjectScript>() as IInteractiveObject;
+    private InteractiveObject getLastCollidedInteractive() {
+        return lastCollidedInteractive.GetComponent<InteractiveObject>() as InteractiveObject;
     }
 }

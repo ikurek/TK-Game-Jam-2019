@@ -5,25 +5,36 @@ using UnityEngine;
 public class ProgressController : MonoBehaviour
 {
     FadeController fadeController;
+    private GameObject playerCharacter;
     int currentEpoch = 0;
     List<string> listOfEpochs = new List<string>() { "first", "second", "etc" };
 
     void Start()
     {
-        fadeController = FadeController.Instance;
+        playerCharacter = GameObject.Find("Player Character");
+        print("Currently running epoch " + listOfEpochs[currentEpoch]);
     }
 
-    void fadeIn()
+    void lockPlayerAndChangeUI()
     {
-        fadeController.FadeIn(1.0f, Color.black);
+        playerCharacter.SetActive(false);
+        
+        FadeController.Instance.FadeOut(1.0f, Color.black, () =>
+        {
+            updateTheme();
+            FadeController.Instance.FadeIn(1.0f, Color.black);
+            
+        });
     }
 
-    void fadeOut()
+    void updateTheme()
     {
-        fadeController.FadeOut(1.0f, Color.black);
+        // TODO: Change UI
+        playerCharacter.SetActive(true);
+
     }
 
-    void tryChangeEpoch()
+    public void tryChangeEpoch()
     {
         if (checkCurrentEpochChangeConditions())
         {
@@ -32,8 +43,10 @@ public class ProgressController : MonoBehaviour
     }
 
     void changeEpoch()
-    {
-        // TODO
+    {   
+        lockPlayerAndChangeUI();
+        currentEpoch++;
+        print("Currently running epoch " + listOfEpochs[currentEpoch]);
     }
 
     bool checkCurrentEpochChangeConditions()
@@ -54,12 +67,25 @@ public class ProgressController : MonoBehaviour
 
     bool isFirstEpochFinished()
     {
-        return true;
+        if (GameObject.Find("Bonfire").GetComponent<BonfireScript>().isActive())
+        {
+            return true;
+
+        }
+        else
+        {
+            return false;
+        }
     }
 
     bool isSecondEpochFinished()
     {
         return false;
+    }
+
+    IEnumerator waitFor(int time)
+    {
+        yield return new WaitForSeconds(time);
     }
 
 }
