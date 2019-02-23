@@ -7,12 +7,15 @@ public class PlayerObjectInteractionScript : MonoBehaviour
 {
     string interactiveTag = "interactive";
     bool isTouchingAnything = false;
-    bool isTouchingInteractive = false;
+    public bool isTouchingInteractive = false;
     GameObject lastCollidedInteractive = null;
-    GameObject heldObject = null;
+    public GameObject heldObject = null;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         InputDispatcher inputDispatcher = FindObjectOfType<InputDispatcher>();
         
         inputDispatcher.AddKeyDownHandler(KeyCode.Space, (KeyCode) => {
@@ -68,6 +71,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject == null && isTouchingInteractive) {
             InteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
+                animator.SetBool("PlayerHandsUp", true);
                 interactive.pickup(gameObject);
                 heldObject = lastCollidedInteractive;
             }
@@ -79,6 +83,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject != null) {
             InteractiveObject interactive = heldObject.GetComponent<InteractiveObject>() as InteractiveObject;
             if(interactive != null) {
+                animator.SetBool("PlayerHandsUp",  false);
                 interactive.drop(gameObject);
                 heldObject = null;
             }
