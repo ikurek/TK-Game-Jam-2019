@@ -6,12 +6,16 @@ using World;
 public class PlayerObjectInteractionScript : MonoBehaviour
 {
     string interactiveTag = "interactive";
-    bool isTouchingInteractive = false;
+    bool isTouchingAnything = false;
+    public bool isTouchingInteractive = false;
     GameObject lastCollidedInteractive = null;
-    GameObject heldObject = null;
+    public GameObject heldObject = null;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         InputDispatcher inputDispatcher = FindObjectOfType<InputDispatcher>();
         
         inputDispatcher.AddKeyDownHandler(KeyCode.Space, (KeyCode) => {
@@ -23,7 +27,10 @@ public class PlayerObjectInteractionScript : MonoBehaviour
             if(heldObject == null) {
                 pickupLastCollidedInteractive();
             } else {
-                dropLastCollidedinteractive();
+                if (!isTouchingAnything)
+                {
+                    dropHeldObject();
+                }
             }
             GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
         });
@@ -32,6 +39,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) 
     {
         print("OnCollisionEnter with " + collision.gameObject.name);
+        isTouchingAnything = true;
         if(collision.gameObject.tag == interactiveTag) {
             isTouchingInteractive = true;
             lastCollidedInteractive = collision.gameObject;
@@ -41,6 +49,7 @@ public class PlayerObjectInteractionScript : MonoBehaviour
     void OnCollisionExit2D(Collision2D collision) 
     {
         print("OnCollisionExit with " + collision.gameObject.name);
+        isTouchingAnything = false;
         if(collision.gameObject.tag == interactiveTag) {
             isTouchingInteractive = false;
         }
@@ -62,17 +71,19 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject == null && isTouchingInteractive) {
             InteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
+                animator.SetBool("PlayerHandsUp", true);
                 interactive.pickup(gameObject);
                 heldObject = lastCollidedInteractive;
             }
         }
     }
 
-    void dropLastCollidedinteractive()
+    void dropHeldObject()
     {
         if(heldObject != null) {
             InteractiveObject interactive = heldObject.GetComponent<InteractiveObject>() as InteractiveObject;
             if(interactive != null) {
+                animator.SetBool("PlayerHandsUp",  false);
                 interactive.drop(gameObject);
                 heldObject = null;
             }
