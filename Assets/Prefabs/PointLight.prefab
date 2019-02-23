@@ -107,4 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 7467dee501cd69a418d86908a1365186, type: 2}
   target: {fileID: 0}
+  target2: {fileID: 0}
   size: -1.5
+  size1: 0.3
+  size2: 0.3

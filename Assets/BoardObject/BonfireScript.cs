@@ -30,12 +30,12 @@ public class BonfireScript : InteractiveObject
     public override void activate(GameObject activator)
     {
         base.activate(activator);
-        //Debug.Log("asdad");
 
         LightPoint_ShaderScript pointLightScript = GameObject.FindGameObjectWithTag("pointLight").GetComponent<LightPoint_ShaderScript>();
 
-        pointLightScript.target = transform;
-        pointLightScript.size = -5;
+        pointLightScript.target2 = transform;
+        pointLightScript.size1 = 0.1f;
+        pointLightScript.size2 = 0.15f;
 
         fire.gameObject.SetActive(true);
         pickable = false;
