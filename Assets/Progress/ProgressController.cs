@@ -1,18 +1,26 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProgressController : MonoBehaviour
 {
+
+    private enum Epoch {
+        First,
+        Second,
+        Third,
+        Final
+    }
+
     FadeController fadeController;
     private GameObject playerCharacter;
-    int currentEpoch = 0;
-    List<string> listOfEpochs = new List<string>() { "first", "second", "etc" };
+    private Epoch currentEpoch = Epoch.First;
 
     void Start()
     {
         playerCharacter = GameObject.Find("Player Character");
-        print("Currently running epoch " + listOfEpochs[currentEpoch]);
+        print("Currently running epoch " + epochName(currentEpoch));
     }
 
     void lockPlayerAndChangeUI()
@@ -45,23 +53,16 @@ public class ProgressController : MonoBehaviour
     void changeEpoch()
     {   
         lockPlayerAndChangeUI();
-        currentEpoch++;
-        print("Currently running epoch " + listOfEpochs[currentEpoch]);
+        currentEpoch = next(currentEpoch);
+        print("Currently running epoch " + epochName(currentEpoch));
     }
 
     bool checkCurrentEpochChangeConditions()
     {
-        if (currentEpoch == 0)
-        {
-            return isFirstEpochFinished();
-        }
-        else if (currentEpoch == 1)
-        {
-            return isSecondEpochFinished();
-        }
-        else
-        {
-            return false;
+        switch (currentEpoch) {
+            case Epoch.First: return isFirstEpochFinished();
+            case Epoch.Second: return isSecondEpochFinished();
+            default: return false;
         }
     }
 
@@ -83,6 +84,25 @@ public class ProgressController : MonoBehaviour
         return false;
     }
 
+    private string epochName(Epoch epoch) {
+        switch (epoch) {
+            case Epoch.First: return "First";
+            case Epoch.Second: return "Second";
+            case Epoch.Third: return "Third";
+            case Epoch.Final: return "Final";
+            default: return "You Forgot To Give It A Name, Dummy";
+        }
+    }
+
+    private Epoch next(Epoch epoch) {
+        switch (epoch) {
+            case Epoch.First: return Epoch.Second;
+            case Epoch.Second: return Epoch.Third;
+            case Epoch.Third: return Epoch.Final;
+            default: throw new NotImplementedException("No epoch to progress to");
+        }
+    }
+    
     IEnumerator waitFor(int time)
     {
         yield return new WaitForSeconds(time);
