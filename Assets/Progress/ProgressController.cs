@@ -71,17 +71,15 @@ public class ProgressController : MonoBehaviour
 
     bool isFirstEpochFinished()
     {
-//        if (GameObject.Find("Typewriter").GetComponent<TypewriterScript>().isActive())
-//        {
-//            return true;
-//
-//        }
-//        else
-//        {
-//            return false;
-//        }
+        if (GameObject.Find("rynna starozytnosc").GetComponent<RynnaScript>().isActive())
+        {
+            return true;
 
-        return false;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     bool isSecondEpochFinished()
