@@ -5,6 +5,7 @@ using UnityEngine;
 public class RynnaScript : InteractiveObject
 {
     public bool pickable = false;
+    [SerializeField] private GameObject waterMachine;
 
     public override GameObject pickup(GameObject parentGameObject)
     {
@@ -45,6 +46,7 @@ public class RynnaScript : InteractiveObject
             if (heldObject.GetComponent<PotScript>().isFilled)
             {
                 Debug.Log("garnek w ryncach  z woda");
+                waterMachine.GetComponent<Animator>().enabled = true;
                 base.activate(activator);
             }
 
