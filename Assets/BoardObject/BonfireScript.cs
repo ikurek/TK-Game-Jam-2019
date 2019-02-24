@@ -46,7 +46,7 @@ public class BonfireScript : InteractiveObject
 
             pointLightScript.target2 = transform;
             pointLightScript.size1 = 0.1f;
-            pointLightScript.size2 = 0.15f;
+            pointLightScript.size2 = 0.1f;
 
             fire.gameObject.SetActive(true);
             pickable = false;
