@@ -69,8 +69,8 @@ public class ProgressController : MonoBehaviour
         return true;
     }
 
-    bool isFirstEpochFinished()
-    {
+    bool isFirstEpochFinished() {
+        //return true; // Test
         if (GameObject.Find("rynna starozytnosc").GetComponent<RynnaScript>().isActive())
         {
             return true;
