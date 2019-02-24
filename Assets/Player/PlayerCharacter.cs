@@ -1,8 +1,9 @@
 ﻿using System;
+using Progress;
 using UnityEngine;
 using World;
 
-public class PlayerCharacter : MonoBehaviour {
+public class PlayerCharacter : MonoBehaviour, IEpochChangeListener {
 	
 	[Flags]
 	private enum MovementDirection {
@@ -124,5 +125,9 @@ public class PlayerCharacter : MonoBehaviour {
 		}
 		return vec;
 	}
-	
+
+	public void epochChanged(Epoch epoch) {
+		if (epoch == Epoch.Intro) gameObject.SetActive(false);
+		else gameObject.SetActive(true);
+	}
 }
