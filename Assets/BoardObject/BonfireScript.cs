@@ -6,6 +6,7 @@ public class BonfireScript : InteractiveObject
 {
 
     [SerializeField] private ParticleSystem fire;
+    [SerializeField] private Sprite PotSprite;
 
     public bool pickable = false;
     
@@ -37,16 +38,28 @@ public class BonfireScript : InteractiveObject
 
     public override void activate(GameObject activator)
     {
-        base.activate(activator);
+        if (!isActive())
+        {
+            base.activate(activator);
 
-        LightPoint_ShaderScript pointLightScript = GameObject.FindGameObjectWithTag("pointLight").GetComponent<LightPoint_ShaderScript>();
+            LightPoint_ShaderScript pointLightScript = GameObject.FindGameObjectWithTag("pointLight").GetComponent<LightPoint_ShaderScript>();
 
-        pointLightScript.target2 = transform;
-        pointLightScript.size1 = 0.1f;
-        pointLightScript.size2 = 0.15f;
+            pointLightScript.target2 = transform;
+            pointLightScript.size1 = 0.1f;
+            pointLightScript.size2 = 0.15f;
 
-        fire.gameObject.SetActive(true);
-        pickable = false;
+            fire.gameObject.SetActive(true);
+            pickable = false;
+        }
+        else
+        {
+            if(activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.glina)
+            {
+                activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<SpriteRenderer>().sprite = PotSprite;
+
+            }
+
+        }
 
     }
 }
