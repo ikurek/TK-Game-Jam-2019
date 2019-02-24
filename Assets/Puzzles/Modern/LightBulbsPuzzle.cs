@@ -127,19 +127,18 @@ public class LightBulbsPuzzle : MonoBehaviour
         }
     }
 
-    void checkAllSocketsForWin()
+    public bool checkAllSocketsForWin()
     {
         foreach (var socket in socketList)
         {
             if (socket.bulbGameObject.GetComponent<SpriteRenderer>().color != colorOn)
             {
-                return;
+                return false;
             }
         }
         
-        //TODO: what when done?
-        
         Debug.Log("win");
+        return true;
     }
     
     
@@ -218,6 +217,7 @@ public class LightBulbsPuzzle : MonoBehaviour
 
         }
 
-        checkAllSocketsForWin();
+        GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
+        //checkAllSocketsForWin();
     }
 }
