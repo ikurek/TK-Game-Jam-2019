@@ -8,7 +8,7 @@ public class ProgressController : MonoBehaviour {
     
     private RoomManager roomManager;
     private GameObject playerCharacter;
-    private Epoch currentEpoch = Epoch.Intro;
+    private Epoch currentEpoch = Epoch.Second;
 
     void Start() {
         roomManager = FindObjectOfType<RoomManager>();
@@ -47,7 +47,7 @@ public class ProgressController : MonoBehaviour {
         }
     }
 
-    void changeEpoch()
+    public void changeEpoch()
     {   
         lockPlayerAndChangeUI();
         currentEpoch = EpochUtil.next(currentEpoch);
@@ -83,9 +83,18 @@ public class ProgressController : MonoBehaviour {
         return false;
     }
 
-    bool isSecondEpochFinished()
+    public bool isSecondEpochFinished()
     {
-        return false;
+        Debug.Log("dupa");
+        if (GameObject.Find("switches").GetComponent<LightBulbsPuzzle>().checkAllSocketsForWin())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
 
 }
