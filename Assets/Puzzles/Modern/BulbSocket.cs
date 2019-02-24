@@ -5,15 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class BulbSocket
 {
-    public bool IsLighBulbOn;
+    public bool isLighBulbOn;
 
-    public bool IsBulbInSocket;
+    public bool isBulbInSocket;
 
-    public GameObject BulbGameObject;
+    public GameObject bulbGameObject;
+
+    public List<GameObject> listOfNeededSwitches;
 
     public BulbSocket(bool isLighBulbOn, bool isBulbInSocket)
     {
-        this.IsLighBulbOn = isLighBulbOn;
-        this.IsBulbInSocket = isBulbInSocket;
+        this.isLighBulbOn = isLighBulbOn;
+        this.isBulbInSocket = isBulbInSocket;
     }
 }
