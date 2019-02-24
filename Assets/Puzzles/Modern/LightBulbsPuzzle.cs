@@ -117,6 +117,15 @@ public class LightBulbsPuzzle : MonoBehaviour
         isElectricityOn = !isElectricityOn;
         Debug.Log("electricity is" + isElectricityOn);
     }
+    
+    public void allBulbsAtSocket()
+    {
+        foreach (BulbSocket bulbSocket in socketList)
+        {
+            socketList[3].isBulbInSocket = true;
+            Debug.Log("electricity is" + isElectricityOn);
+        }
+    }
 
     void checkAllSocketsForWin()
     {

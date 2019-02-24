@@ -12,6 +12,22 @@ public class BulbSwitcher : InteractiveObject
 
     [SerializeField]
     public bool isActive;
+
+    private bool pickable = false;
+    
+    public override GameObject pickup(GameObject parentGameObject)
+    {
+        if (pickable)
+        {
+            base.playSound("Sound/pick_wood");
+            return base.pickup(parentGameObject);
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
     
     public override void activate(GameObject activator)
     {
