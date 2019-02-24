@@ -18,12 +18,12 @@ public class PlayerObjectInteractionScript : MonoBehaviour
 
         InputDispatcher inputDispatcher = FindObjectOfType<InputDispatcher>();
         
-        inputDispatcher.AddKeyDownHandler(KeyCode.Space, (KeyCode) => {
+        inputDispatcher.AddKeyDownHandler(KeyCode.F, (KeyCode) => {
             activateLastCollidedInteractive();
             GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
         });
 
-        inputDispatcher.AddKeyDownHandler(KeyCode.Return, (KeyCode) => {
+        inputDispatcher.AddKeyDownHandler(KeyCode.E, (KeyCode) => {
             if(heldObject == null) {
                 pickupLastCollidedInteractive();
             } else {
