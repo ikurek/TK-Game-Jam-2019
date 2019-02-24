@@ -16,6 +16,8 @@ public class BulbSwitcher : InteractiveObject
     public override void activate(GameObject activator)
     {
         isActive = !isActive;
+
+        GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
         
         switch (switchNumber)
         {
