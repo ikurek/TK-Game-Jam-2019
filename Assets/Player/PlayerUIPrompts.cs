@@ -47,22 +47,22 @@ public class PlayerUIPrompts : MonoBehaviour
 //                
 //            }
             
-            UpPrompt.SetActive(true);
-            UpPrompt.transform.position = transform.position + new Vector3(playerPromptOffsetX,playerPromptOffsetY,-9.48f);
-        }
-        else
-        {
-            UpPrompt.SetActive(false);
-        }
-        
-        if (playerInteraction.heldObject!=null)
-        {
             Activate.SetActive(true);
-            Activate.transform.position = transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,-9.48f);
+            Activate.transform.position = transform.position + new Vector3(playerPromptOffsetX,playerPromptOffsetY,-9.48f);
         }
         else
         {
             Activate.SetActive(false);
+        }
+        
+        if (playerInteraction.heldObject!=null)
+        {
+            UpPrompt.SetActive(true);
+            UpPrompt.transform.position = transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,-9.48f);
+        }
+        else
+        {
+            UpPrompt.SetActive(false);
         }
         
     }
