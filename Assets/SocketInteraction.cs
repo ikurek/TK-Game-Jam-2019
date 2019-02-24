@@ -31,6 +31,7 @@ public class SocketInteraction : InteractiveObject
 
         if(activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.zarowka)
         {
+            base.playSound("Sound/lightbulb_screw");
             bulb.SetActive(true);
             switchGo.GetComponent<LightBulbsPuzzle>().allBulbsAtSocket();
             activator.GetComponent<PlayerObjectInteractionScript>().heldObject.SetActive(false);

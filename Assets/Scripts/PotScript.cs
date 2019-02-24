@@ -39,7 +39,7 @@ public class PotScript : InteractiveObject
     {
         if (pickable)
         {
-            base.playSound("Sound/drop_wood");
+            base.playSound("Sound/pot_drop");
             return base.drop(exParentGameObject);
         }
         else

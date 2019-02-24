@@ -20,9 +20,14 @@ public class PlayerCharacter : MonoBehaviour, IEpochChangeListener {
 	private new Collider2D collider;
 	private MovementDirection movementDirection = MovementDirection.None;
     private Animator animator;
+    private AudioSource audioSource;
+    private AudioClip walkAudioClip;
 	
 	private void Awake() {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        walkAudioClip = Resources.Load<AudioClip>("Sound/walking");
+        audioSource.clip = walkAudioClip;
 
 		collider = GetComponent<Collider2D>();
 		if (collider == null) {
@@ -67,6 +72,9 @@ public class PlayerCharacter : MonoBehaviour, IEpochChangeListener {
 	private void startMovement(MovementDirection direction) {
 		movementDirection |= direction;
 
+		audioSource.Play();
+		print("Walking");
+		
         animator.SetBool("IsPlayerMoving", true);
 
         switch(direction)
@@ -92,6 +100,9 @@ public class PlayerCharacter : MonoBehaviour, IEpochChangeListener {
 	
 	private void stopMovement(MovementDirection direction) {
 		movementDirection &= ~direction;
+		
+		audioSource.Stop();
+		print("Stopped");
 
         animator.SetBool("IsPlayerMoving", false);
 
