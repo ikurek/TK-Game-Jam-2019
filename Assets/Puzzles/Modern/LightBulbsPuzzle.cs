@@ -8,11 +8,7 @@ public class LightBulbsPuzzle : MonoBehaviour
     [SerializeField]
     private List<BulbSocket> socketList;
 
-//    [SerializeField]
-//    private List<GameObject> socketGameObjectList;
     
-    [SerializeField]
-    private float electricity = 0;
     [SerializeField]
     private float electricityPowerOnFactor = 0.2f;
     [SerializeField]
@@ -42,7 +38,7 @@ public class LightBulbsPuzzle : MonoBehaviour
     {
         foreach (BulbSocket socket in socketList)
         {
-            socket.BulbGameObject.GetComponent<SpriteRenderer>().color = colorOff;
+            socket.bulbGameObject.GetComponent<SpriteRenderer>().color = colorOff;
         }
 
         targetColor = colorOff;
@@ -94,34 +90,39 @@ public class LightBulbsPuzzle : MonoBehaviour
 
     private void switchFirstBulb()
     {
-        socketList[0].IsLighBulbOn = !socketList[0].IsLighBulbOn;
-        Debug.Log("light 0 is" + socketList[0].IsLighBulbOn);
+        socketList[0].isLighBulbOn = !socketList[0].isLighBulbOn;
+        Debug.Log("light 0 is" + socketList[0].isLighBulbOn);
     }
     
     private void switchSecondBulb()
     {
-        socketList[1].IsLighBulbOn = !socketList[1].IsLighBulbOn;
-        Debug.Log("light 1 is" + socketList[1].IsLighBulbOn);
+        socketList[1].isLighBulbOn = !socketList[1].isLighBulbOn;
+        Debug.Log("light 1 is" + socketList[1].isLighBulbOn);
     }
     
     private void switchThirdBulb()
     {
-        socketList[2].IsLighBulbOn = !socketList[2].IsLighBulbOn;
-        Debug.Log("light 2 is" + socketList[2].IsLighBulbOn);
+        socketList[2].isLighBulbOn = !socketList[2].isLighBulbOn;
+        Debug.Log("light 2 is" + socketList[2].isLighBulbOn);
     }
     
     private void switchFourthBulb()
     {
-        socketList[3].IsLighBulbOn = !socketList[3].IsLighBulbOn;
-        Debug.Log("light 3 is" + socketList[3].IsLighBulbOn);
+        socketList[3].isLighBulbOn = !socketList[3].isLighBulbOn;
+        Debug.Log("light 3 is" + socketList[3].isLighBulbOn);
     }
-
+    
+    public void switchElectricity()
+    {
+        isElectricityOn = !isElectricityOn;
+        Debug.Log("electricity is" + isElectricityOn);
+    }
 
     void checkAllSocketsForWin()
     {
         foreach (var socket in socketList)
         {
-            if (!socket.IsLighBulbOn || !socket.IsBulbInSocket)
+            if (socket.bulbGameObject.GetComponent<SpriteRenderer>().color != colorOn)
             {
                 return;
             }
@@ -137,14 +138,14 @@ public class LightBulbsPuzzle : MonoBehaviour
     void Update()
     {
         
-        TestingOnKeykodes();
+//        TestingOnKeykodes();
 //        Debug.Log("update");
         
         foreach (var socket in socketList)
         {
             t = 0;
             
-            if (!socket.IsBulbInSocket)
+            if (!socket.isBulbInSocket)
             {
                 targetColor = colorOff;
                 t += Time.deltaTime / electricityPowerOffFactor;
@@ -153,15 +154,48 @@ public class LightBulbsPuzzle : MonoBehaviour
             {
                 if (isElectricityOn)
                 {
-                    if (socket.IsLighBulbOn)
+                    if (socket.listOfNeededSwitches.Count==0)
                     {
-                        targetColor = colorOn;
-                        t += Time.deltaTime / electricityPowerOnFactor;
+                        if (socket.isLighBulbOn)
+                        {
+                            targetColor = colorOn;
+                            t += Time.deltaTime / electricityPowerOnFactor;
+                        }
+                        else
+                        {
+                            targetColor = colorOff;
+                            t += Time.deltaTime / electricityPowerOffFactor;
+                        }
                     }
                     else
                     {
-                        targetColor = colorOff;
-                        t += Time.deltaTime / electricityPowerOffFactor;
+                        bool allSwitches = true;
+                        foreach (GameObject socketListOfNeededSwitch in socket.listOfNeededSwitches)
+                        {
+                            if (!socketListOfNeededSwitch.GetComponent<BulbSwitcher>().isActive)
+                            {
+                                allSwitches = false;
+                            }
+                        }
+
+                        if (allSwitches)
+                        {
+                            if (socket.isLighBulbOn)
+                            {
+                                targetColor = colorOn;
+                                t += Time.deltaTime / electricityPowerOnFactor;
+                            }
+                            else
+                            {
+                                targetColor = colorOff;
+                                t += Time.deltaTime / electricityPowerOffFactor;
+                            }
+                        }
+                        else
+                        {
+                            targetColor = colorOff;
+                            t += Time.deltaTime / electricityPowerOffFactor; 
+                        }
                     }
                 }
                 else
@@ -171,7 +205,7 @@ public class LightBulbsPuzzle : MonoBehaviour
                 }
             }
             
-            socket.BulbGameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(socket.BulbGameObject.GetComponent<SpriteRenderer>().color,targetColor,t);
+            socket.bulbGameObject.GetComponent<SpriteRenderer>().color = Color.Lerp(socket.bulbGameObject.GetComponent<SpriteRenderer>().color,targetColor,t);
 
         }
 
