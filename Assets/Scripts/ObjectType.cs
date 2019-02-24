@@ -7,5 +7,6 @@ public enum ObjectType
     nic,
     sol,
     glina,
-    zarowka
+    zarowka,
+    garnek
 }

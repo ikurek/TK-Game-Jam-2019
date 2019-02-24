@@ -2,25 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PotScript : InteractiveObject
+public class SinkScript : InteractiveObject
 {
+
     public bool pickable = false;
-    [SerializeField] private GameObject fireToMakePot;
-    [SerializeField] private Sprite PotSprite;
-
-    private bool isFilled = false;
-
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-
-    //    if(collision.gameObject.Equals(fireToMakePot))
-    //    {
-    //        if(fireToMakePot.GetComponent<BonfireScript>().isActive())
-    //        transform.GetComponent<SpriteRenderer>().sprite = PotSprite;
-    //    }
-    //}
-
 
     public override GameObject pickup(GameObject parentGameObject)
     {
@@ -50,7 +35,19 @@ public class PotScript : InteractiveObject
 
     public override void activate(GameObject activator)
     {
-        base.activate(activator);
+
+        GameObject heldObject = activator.GetComponent<PlayerObjectInteractionScript>().heldObject;
+
+        if (heldObject != null)
+        {
+            if (heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.garnek)
+            {
+                heldObject.GetComponent<PotScript>().isFilled = true;
+
+            }
+        }
+
+
 
     }
 }

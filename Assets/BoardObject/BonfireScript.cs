@@ -53,9 +53,12 @@ public class BonfireScript : InteractiveObject
         }
         else
         {
-            if(activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.glina)
+            GameObject heldObject = activator.GetComponent<PlayerObjectInteractionScript>().heldObject;
+
+            if (heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.glina)
             {
-                activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<SpriteRenderer>().sprite = PotSprite;
+                heldObject.GetComponent<SpriteRenderer>().sprite = PotSprite;
+                heldObject.GetComponent<ObjectTypeClass>().objectType = ObjectType.garnek;
 
             }
 
