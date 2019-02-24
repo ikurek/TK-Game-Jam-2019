@@ -10,6 +10,7 @@ public class Doorway : InteractiveObject {
 
 	public override void activate(GameObject activator) {
 		if (activator.CompareTag(characterTag)) {
+			base.playSound("Sound/door_open");
 			otherEnd.acceptEntityTeleport(activator);
 		}
 	}
