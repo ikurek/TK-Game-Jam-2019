@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &173383325
 Transform:
   m_ObjectHideFlags: 0
@@ -231,7 +231,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickable: 0
   waterMachine: {fileID: 2820421080896772029}
-  playeKiller: {fileID: 173383322}
 --- !u!68 &2820421080406305636
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -957,11 +956,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PointLight
-      objectReference: {fileID: 0}
-    - target: {fileID: 2122530972978305423, guid: 7c0842320042cec4aa060c9b650120d3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2122530972978305419, guid: 7c0842320042cec4aa060c9b650120d3,
         type: 3}
