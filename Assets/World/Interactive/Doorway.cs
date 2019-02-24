@@ -14,9 +14,9 @@ public class Doorway : InteractiveObject {
 		}
 	}
 
-	public override void pickup(GameObject parentGameObject) {}
+	public override GameObject pickup(GameObject parentGameObject) { return null; }
 
-	public override void drop(GameObject exParentGameObject) {}
+	public override GameObject drop(GameObject exParentGameObject) { return null; }
 
 	public void acceptEntityTeleport(GameObject entity) {
 		entity.transform.position = teleportExitPosition;

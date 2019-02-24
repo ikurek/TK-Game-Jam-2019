@@ -17,7 +17,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 11.21, y: 5.61}
+    oldSize: {x: 5.07, y: 1.63}
     newSize: {x: 11.21, y: 5.61}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 4143545553214924139, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
       propertyPath: m_Name
-      value: Stairwell NW Variant
+      value: Stairwell NW
       objectReference: {fileID: 0}
     - target: {fileID: 4364135123909529317, guid: 04e18efabbc9445009d2d7c434f8c72b,
         type: 3}
@@ -207,7 +207,8 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7476863197353510870, guid: 04e18efabbc9445009d2d7c434f8c72b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 04e18efabbc9445009d2d7c434f8c72b, type: 3}
 --- !u!1 &744907883925636183 stripped
 GameObject:
