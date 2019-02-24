@@ -7,7 +7,7 @@ public class PlayerUIPrompts : MonoBehaviour
     [SerializeField]
     private GameObject UpPrompt;
     [SerializeField]
-    private GameObject PutPrompt;
+    private GameObject Activate;    
 
     [SerializeField]
     private GameObject PutActivatePrompt;
@@ -32,7 +32,7 @@ public class PlayerUIPrompts : MonoBehaviour
     void Start()
     {
         UpPrompt.SetActive(false);
-        PutPrompt.SetActive(false);
+        Activate.SetActive(false);
 //        PutActivatePrompt.SetActive(false);
         playerInteraction = GetComponent<PlayerObjectInteractionScript>();
     }
@@ -57,12 +57,12 @@ public class PlayerUIPrompts : MonoBehaviour
         
         if (playerInteraction.heldObject!=null)
         {
-            PutPrompt.SetActive(true);
-            PutPrompt.transform.position = transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,0);
+            Activate.SetActive(true);
+            Activate.transform.position = transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,0);
         }
         else
         {
-            PutPrompt.SetActive(false);
+            Activate.SetActive(false);
         }
         
     }

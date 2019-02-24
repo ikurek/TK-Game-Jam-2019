@@ -50,6 +50,7 @@ public class PotScript : InteractiveObject
 
     public override void activate(GameObject activator)
     {
+        
         base.activate(activator);
 
     }
