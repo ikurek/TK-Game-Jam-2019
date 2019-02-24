@@ -6,9 +6,9 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour {
 	public GameObject firstEpochScenery;
 	public GameObject secondEpochScenery;
-	//public GameObject thirdEpochScenery;
-	//public GameObject fourthEpochScenery;
-	//public GameObject finalEpochScenery;
+	public GameObject thirdEpochScenery;
+	public GameObject fourthEpochScenery;
+	public GameObject finalEpochScenery;
 
 	private EpochChangeListenerScript[] listenerScripts;
 
@@ -20,9 +20,9 @@ public class RoomManager : MonoBehaviour {
 		// hide environment
 		firstEpochScenery.SetActive(false);
 		secondEpochScenery.SetActive(false);
-	//	thirdEpochScenery.SetActive(false);
-	//	fourthEpochScenery.SetActive(false);
-	//	finalEpochScenery.SetActive(false);
+		thirdEpochScenery.SetActive(false);
+		fourthEpochScenery.SetActive(false);
+		finalEpochScenery.SetActive(false);
 		
 		// show the right environment
 		switch (epoch) {
@@ -33,13 +33,13 @@ public class RoomManager : MonoBehaviour {
 				secondEpochScenery.SetActive(true);
 				break;
 			case Epoch.Third:
-	//			thirdEpochScenery.SetActive(true);
+				thirdEpochScenery.SetActive(true);
 				break;
 			case Epoch.Fourth:
-	//			fourthEpochScenery.SetActive(true);
+				fourthEpochScenery.SetActive(true);
 				break;
 			case Epoch.Final:
-	//			finalEpochScenery.SetActive(true);
+				finalEpochScenery.SetActive(true);
 				break;
 		}
 

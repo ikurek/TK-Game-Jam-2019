@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Progress;
 
-public class ProgressController : MonoBehaviour
-{
-
+public class ProgressController : MonoBehaviour {
+    
     private RoomManager roomManager;
     private GameObject playerCharacter;
     private Epoch currentEpoch = Epoch.Intro;
