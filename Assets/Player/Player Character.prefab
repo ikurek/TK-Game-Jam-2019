@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4496307740589598759
 Transform:
   m_ObjectHideFlags: 0
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpPrompt: {fileID: 3641537857862351767}
-  PutPrompt: {fileID: 6652297910362164271}
+  Activate: {fileID: 6652297910362164271}
   PutActivatePrompt: {fileID: 0}
   playerPromptOffsetY: 4.7
   playerPromptOffsetX: 0.8
@@ -460,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7527726685349334948
 Transform:
   m_ObjectHideFlags: 0
