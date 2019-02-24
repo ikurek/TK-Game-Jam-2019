@@ -7,7 +7,7 @@ public class RynnaScript : InteractiveObject, IEpochChangeListener
 {
     public bool pickable = false;
     [SerializeField] private GameObject waterMachine;
-    [SerializeField] private PlayerKillerScript playeKiller;
+//    [SerializeField] private PlayerKillerScript playeKiller;
 
     public override GameObject pickup(GameObject parentGameObject)
     {
@@ -48,7 +48,7 @@ public class RynnaScript : InteractiveObject, IEpochChangeListener
                 base.playSound("Sound/water_tap");
                 waterMachine.GetComponent<Animator>().enabled = true;
                 base.activate(activator);
-                playeKiller.IsDead = true;
+//                playeKiller.IsDead = true;
                 epochChanged(Epoch.First);
 
             }

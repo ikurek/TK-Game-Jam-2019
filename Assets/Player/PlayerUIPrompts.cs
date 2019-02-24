@@ -48,7 +48,7 @@ public class PlayerUIPrompts : MonoBehaviour
 //            }
             
             UpPrompt.SetActive(true);
-            UpPrompt.transform.position = transform.position + new Vector3(playerPromptOffsetX,playerPromptOffsetY,0);
+            UpPrompt.transform.position = transform.position + new Vector3(playerPromptOffsetX,playerPromptOffsetY,-9.48f);
         }
         else
         {
@@ -58,7 +58,7 @@ public class PlayerUIPrompts : MonoBehaviour
         if (playerInteraction.heldObject!=null)
         {
             Activate.SetActive(true);
-            Activate.transform.position = transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,0);
+            Activate.transform.position = transform.position + new Vector3(playerPromptHoldOffsetX,playerPromptHoldOffsetY,-9.48f);
         }
         else
         {
