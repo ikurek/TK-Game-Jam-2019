@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4496307740589598759
 Transform:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ba6ddb62c523f8ad5b74ea6402db93a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a7381bde3b9a2d84095c0036980b91c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -440,10 +440,10 @@ MonoBehaviour:
   UpPrompt: {fileID: 3641537857862351767}
   PutPrompt: {fileID: 6652297910362164271}
   PutActivatePrompt: {fileID: 0}
-  playerPromptOffsetY: 3.3
-  playerPromptOffsetX: 0
+  playerPromptOffsetY: 4.7
+  playerPromptOffsetX: 0.8
   playerPromptHoldOffsetY: 4.7
-  playerPromptHoldOffsetX: 0
+  playerPromptHoldOffsetX: -0.8
 --- !u!1 &6652297910362164271
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7527726685349334948
 Transform:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ba6ddb62c523f8ad5b74ea6402db93a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 093ba75d253aeb34cb67764f56485c63, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

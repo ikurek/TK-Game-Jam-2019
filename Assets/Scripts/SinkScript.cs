@@ -43,6 +43,7 @@ public class SinkScript : InteractiveObject
             if (heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.garnek)
             {
                 heldObject.GetComponent<PotScript>().isFilled = true;
+                base.playSound("Sound/water_tap");
 
             }
         }

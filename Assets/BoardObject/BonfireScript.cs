@@ -7,6 +7,8 @@ public class BonfireScript : InteractiveObject
 
     [SerializeField] private ParticleSystem fire;
     [SerializeField] private Sprite PotSprite;
+    [SerializeField] private AudioClip fireBurning;
+
 
     public bool pickable = false;
     
@@ -47,6 +49,8 @@ public class BonfireScript : InteractiveObject
             pointLightScript.target2 = transform;
             pointLightScript.size1 = 0.1f;
             pointLightScript.size2 = 0.1f;
+
+            transform.GetComponent<AudioSource>().Play();
 
             fire.gameObject.SetActive(true);
             pickable = false;

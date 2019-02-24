@@ -26,7 +26,7 @@ Material:
     - Vector1_DECBA3D6: -1.5
     - Vector1_E3E22DBC: 20
     m_Colors:
-    - Vector2_3E6974E6: {r: -13.881867, g: -0.7172234, b: 0, a: 0}
+    - Vector2_3E6974E6: {r: 7.613308, g: 2.1140065, b: 0, a: 0}
     - Vector2_5B8641B: {r: 0.5, g: 0.5, b: 0, a: 0}
     - Vector2_5FF431E9: {r: 7.54, g: -3.96, b: 0, a: 0}
     - Vector2_C41B40B8: {r: -0.4544309, g: 0.35255247, b: 0.14550781, a: 0}
