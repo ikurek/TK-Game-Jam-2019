@@ -15,6 +15,7 @@ public class PlayerCharacter : MonoBehaviour, IEpochChangeListener {
 	}
 	
 	public float movementSpeed;
+    
 	
 	private new Collider2D collider;
 	private MovementDirection movementDirection = MovementDirection.None;

@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using Progress;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RynnaScript : InteractiveObject
+public class RynnaScript : InteractiveObject, IEpochChangeListener
 {
     public bool pickable = false;
     [SerializeField] private GameObject waterMachine;
+    [SerializeField] private PlayerKillerScript playeKiller;
 
     public override GameObject pickup(GameObject parentGameObject)
     {
@@ -46,6 +48,9 @@ public class RynnaScript : InteractiveObject
                 base.playSound("Sound/water_tap");
                 waterMachine.GetComponent<Animator>().enabled = true;
                 base.activate(activator);
+                playeKiller.IsDead = true;
+                epochChanged(Epoch.First);
+
             }
 
 
@@ -53,5 +58,10 @@ public class RynnaScript : InteractiveObject
 
 
 
+    }
+
+    public void epochChanged(Epoch epoch)
+    {
+        ;
     }
 }
