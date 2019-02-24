@@ -83,9 +83,12 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject == null && isTouchingInteractive) {
             InteractiveObject interactive = getLastCollidedInteractive();
             if(interactive != null) {
-                animator.SetBool("PlayerHandsUp", true);
-                interactive.pickup(gameObject);
-                heldObject = lastCollidedInteractive;
+                heldObject = interactive.pickup(gameObject);
+                if (heldObject != null)
+                {
+                    animator.SetBool("PlayerHandsUp", true);
+                }
+                
             }
         }
     }
@@ -95,9 +98,9 @@ public class PlayerObjectInteractionScript : MonoBehaviour
         if(heldObject != null) {
             InteractiveObject interactive = heldObject.GetComponent<InteractiveObject>() as InteractiveObject;
             if(interactive != null) {
-                animator.SetBool("PlayerHandsUp",  false);
                 interactive.drop(gameObject);
                 heldObject = null;
+                animator.SetBool("PlayerHandsUp",  false);
             }
         }
     }

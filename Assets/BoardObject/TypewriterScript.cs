@@ -12,21 +12,29 @@ public class TypewriterScript : InteractiveObject
         base.activate(activator);
     }
 
-    public override void pickup(GameObject parentGameObject)
+    public override GameObject pickup(GameObject parentGameObject)
     {
         if (pickable)
         {
             base.playSound("Sound/pick_wood");
-            base.pickup(parentGameObject);
+            return base.pickup(parentGameObject);
+        }
+        else
+        {
+            return null;
         }
     }
 
-    public override void drop(GameObject exParentGameObject)
+    public override GameObject drop(GameObject exParentGameObject)
     {
         if (pickable)
         {
             base.playSound("Sound/typewriter_drop");
-            base.drop(exParentGameObject);
+            return base.drop(exParentGameObject);
+        }
+        else
+        {
+            return null;
         }
     }
 }

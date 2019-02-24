@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-namespace Shaders.LightPoint
-{
     public class LightPoint_ShaderScript : MonoBehaviour
     {
 
         [SerializeField] Material material;
 
-        [SerializeField] private Transform target;
-        [SerializeField] private float size = -1f;//Bigger if more on negative
+        public Transform target;
+        public Transform target2;
+        public float size = -1f;//Bigger if more on negative
+    public float size1 = 0.38f;
+    public float size2 = 0.11f;
         
 //        [SerializeField] private float timeScale;
 //        [SerializeField] private float transformTimeScale = 0.05f;
@@ -35,11 +36,19 @@ namespace Shaders.LightPoint
         // Update is called once per frame
         void Update()
         {
-            if(material.HasProperty("Vector2_3E6974E6"))
-                material.SetVector("Vector2_3E6974E6", target.position);
-            
-            if(material.HasProperty("Vector1_DECBA3D6"))
+        if (material.HasProperty("Vector2_5FF431E9"))
+            material.SetVector("Vector2_5FF431E9", target2.position);
+
+        if (material.HasProperty("Vector2_3E6974E6"))
+            material.SetVector("Vector2_3E6974E6", target.position);
+
+        if (material.HasProperty("Vector1_DECBA3D6"))
                 material.SetFloat("Vector1_DECBA3D6", size);
-        }
+
+        if (material.HasProperty("Vector1_11A619D5"))
+            material.SetFloat("Vector1_11A619D5", size1);
+
+        if (material.HasProperty("Vector1_40D93AA6"))
+            material.SetFloat("Vector1_40D93AA6", size2);
     }
-}
+    }
