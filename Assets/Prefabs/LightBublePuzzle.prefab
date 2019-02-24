@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1125074812}
   - component: {fileID: 1125074815}
   - component: {fileID: 1125074813}
-  - component: {fileID: 502840006}
+  - component: {fileID: 1772570089}
   m_Layer: 0
   m_Name: switch(3)
   m_TagString: interactive
@@ -184,12 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caa14a61d5ac4e40ae65f04d81c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0, g: 0, b: 0, a: 0}
   switchNumber: 4
   parent: {fileID: 606165198734257426}
   isActive: 0
---- !u!58 &502840006
-CircleCollider2D:
+--- !u!70 &1772570089
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -198,12 +197,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21, y: -0.11}
-  serializedVersion: 2
-  m_Radius: 1.53
+  m_Offset: {x: 0.009103894, y: -0.5735514}
+  m_Size: {x: 0.8794911, y: 2.3474774}
+  m_Direction: 0
 --- !u!1 &1346674301
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,9 +450,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1639180992}
   - component: {fileID: 1639180991}
+  - component: {fileID: 737262448}
+  - component: {fileID: 737262447}
   m_Layer: 0
   m_Name: socket (4)
-  m_TagString: Untagged
+  m_TagString: interactive
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,6 +521,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &737262448
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639180990}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.43100005
+--- !u!114 &737262447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639180990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df3824ed8e630e478f8db846dc29ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulb: {fileID: 606165198888408878}
+  switchGo: {fileID: 606165198734257426}
 --- !u!1 &1701864157
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,9 +811,8 @@ GameObject:
   - component: {fileID: 606165197401098209}
   - component: {fileID: 606165197401098208}
   - component: {fileID: 606165197401098215}
-  - component: {fileID: 1771332017}
-  - component: {fileID: 1093784786}
   - component: {fileID: 1093784787}
+  - component: {fileID: 1093784783}
   m_Layer: 0
   m_Name: switch
   m_TagString: interactive
@@ -864,47 +894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caa14a61d5ac4e40ae65f04d81c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0, g: 0, b: 0, a: 0}
   switchNumber: 3
   parent: {fileID: 606165198734257426}
   isActive: 0
---- !u!58 &1771332017
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606165197401098211}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.21, y: -0.11}
-  serializedVersion: 2
-  m_Radius: 1.53
---- !u!50 &1093784786
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606165197401098211}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!82 &1093784787
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1001,6 +993,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!70 &1093784783
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606165197401098211}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.009103894, y: -0.5735514}
+  m_Size: {x: 0.8794911, y: 2.3474774}
+  m_Direction: 0
 --- !u!1 &606165197723534565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1012,7 +1020,7 @@ GameObject:
   - component: {fileID: 606165197723534555}
   - component: {fileID: 606165197723534554}
   - component: {fileID: 606165197723534553}
-  - component: {fileID: 1958464617}
+  - component: {fileID: 1096930261}
   m_Layer: 0
   m_Name: switch(1)
   m_TagString: interactive
@@ -1094,12 +1102,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caa14a61d5ac4e40ae65f04d81c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0, g: 0, b: 0, a: 0}
   switchNumber: 2
   parent: {fileID: 606165198734257426}
   isActive: 0
---- !u!58 &1958464617
-CircleCollider2D:
+--- !u!70 &1096930261
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1108,12 +1115,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21, y: -0.11}
-  serializedVersion: 2
-  m_Radius: 1.53
+  m_Offset: {x: 0.009103894, y: -0.5735514}
+  m_Size: {x: 0.8794911, y: 2.3474774}
+  m_Direction: 0
 --- !u!1 &606165197784973688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,7 +1331,7 @@ GameObject:
   - component: {fileID: 606165198198439057}
   - component: {fileID: 606165198198439056}
   - component: {fileID: 606165198198439062}
-  - component: {fileID: 1493542872}
+  - component: {fileID: 900945436}
   m_Layer: 0
   m_Name: switch(2)
   m_TagString: interactive
@@ -1406,12 +1413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caa14a61d5ac4e40ae65f04d81c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0, g: 0, b: 0, a: 0}
   switchNumber: 1
   parent: {fileID: 606165198734257426}
   isActive: 0
---- !u!58 &1493542872
-CircleCollider2D:
+--- !u!70 &900945436
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1420,12 +1426,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21, y: -0.11}
-  serializedVersion: 2
-  m_Radius: 1.53
+  m_Offset: {x: 0.009103894, y: -0.5735514}
+  m_Size: {x: 0.8794911, y: 2.3474774}
+  m_Direction: 0
 --- !u!1 &606165198585810839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1569,7 +1575,7 @@ MonoBehaviour:
     listOfNeededSwitches:
     - {fileID: 6700625880678013790}
   - isLighBulbOn: 1
-    isBulbInSocket: 1
+    isBulbInSocket: 0
     bulbGameObject: {fileID: 606165198888408878}
     listOfNeededSwitches:
     - {fileID: 6700625880678013790}
@@ -1599,7 +1605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &606165198888408876
 Transform:
   m_ObjectHideFlags: 0
@@ -1608,7 +1614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606165198888408878}
   m_LocalRotation: {x: -0, y: -0, z: -0.70589685, w: 0.70831466}
-  m_LocalPosition: {x: 8.1, y: 0.01, z: 5}
+  m_LocalPosition: {x: -12.6, y: 5.12, z: 5}
   m_LocalScale: {x: 5.783, y: 5.172002, z: 1}
   m_Children: []
   m_Father: {fileID: 1486250042645125692}
@@ -1942,7 +1948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caa14a61d5ac4e40ae65f04d81c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0, g: 0, b: 0, a: 0}
   switchNumber: 3
   parent: {fileID: 606165198734257426}
   isActive: 0
@@ -1993,13 +1998,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6700625880678013790}
-  m_LocalRotation: {x: 0.13740367, y: -0.066911444, z: -0.02093344, w: 0.9880308}
+  m_LocalRotation: {x: 0.1381172, y: -0.06542596, z: -0.010278511, w: 0.9881991}
   m_LocalPosition: {x: -7.17, y: -0.92, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.29, z: 1}
   m_Children: []
   m_Father: {fileID: 606165197784973689}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 15.588, y: -8.236, z: -3.5570002}
+  m_LocalEulerAnglesHint: {x: 15.761001, y: -7.892, z: -2.286}
 --- !u!212 &6281646933187646922
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2086,7 +2091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caa14a61d5ac4e40ae65f04d81c9d87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeColor: {r: 0, g: 0, b: 0, a: 0}
   switchNumber: 5
   parent: {fileID: 606165198734257426}
   isActive: 0
