@@ -439,8 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d8cb1401659cd4c812987dcd461bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpPrompt: {fileID: 3641537857862351767}
-  Activate: {fileID: 6652297910362164271}
+  UpPrompt: {fileID: 6652297910362164271}
+  Activate: {fileID: 3641537857862351767}
   PutActivatePrompt: {fileID: 0}
   playerPromptOffsetY: 4.7
   playerPromptOffsetX: 0.8
