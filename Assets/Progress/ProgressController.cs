@@ -8,7 +8,7 @@ public class ProgressController : MonoBehaviour {
     
     private RoomManager roomManager;
     private GameObject playerCharacter;
-    private Epoch currentEpoch = Epoch.First;
+    private Epoch currentEpoch = Epoch.Intro;
 
     void Start() {
         roomManager = FindObjectOfType<RoomManager>();
