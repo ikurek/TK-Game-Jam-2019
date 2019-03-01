@@ -53,7 +53,7 @@ public class BonfireScript : InteractiveObject
             transform.GetComponent<AudioSource>().Play();
 
             fire.gameObject.SetActive(true);
-            pickable = false;
+            //pickable = false;
         }
         else
         {
