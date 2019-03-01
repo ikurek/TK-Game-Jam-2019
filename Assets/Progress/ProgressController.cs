@@ -8,7 +8,7 @@ public class ProgressController : MonoBehaviour {
     
     private RoomManager roomManager;
     private GameObject playerCharacter;
-    private Epoch currentEpoch = Epoch.Second;
+    private Epoch currentEpoch = Epoch.First;
 
     void Start() {
         roomManager = FindObjectOfType<RoomManager>();
@@ -73,6 +73,8 @@ public class ProgressController : MonoBehaviour {
         
         if (GameObject.Find("rynna starozytnosc").GetComponent<RynnaScript>().isActive())
         {
+            GameObject.Find("Player Character").GetComponent<PlayerObjectInteractionScript>().heldObject.SetActive(false);
+            GameObject.Find("Player Character").GetComponent<PlayerObjectInteractionScript>().heldObject = null;
             return true;
         }
         else
