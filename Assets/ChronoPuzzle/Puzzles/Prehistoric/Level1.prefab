@@ -877,6 +877,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PointLight
       objectReference: {fileID: 0}
+    - target: {fileID: 2122530972978305423, guid: 7c0842320042cec4aa060c9b650120d3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2122530972978305419, guid: 7c0842320042cec4aa060c9b650120d3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1027,11 +1032,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 7.826
       objectReference: {fileID: 0}
-    - target: {fileID: 7954239966086552217, guid: 4886ead8895eb6c5d9ba59a9516f4589,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1752314938, guid: 4886ead8895eb6c5d9ba59a9516f4589, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -1039,6 +1039,11 @@ PrefabInstance:
     - target: {fileID: 1752314938, guid: 4886ead8895eb6c5d9ba59a9516f4589, type: 3}
       propertyPath: Loop
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954239966086552217, guid: 4886ead8895eb6c5d9ba59a9516f4589,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8310689842938801277, guid: 4886ead8895eb6c5d9ba59a9516f4589,
         type: 3}
