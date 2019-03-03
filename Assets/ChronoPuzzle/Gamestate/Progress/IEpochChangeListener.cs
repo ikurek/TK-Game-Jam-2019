@@ -1,4 +1,4 @@
-namespace Progress {
+namespace ChronoPuzzle.Gamestate.Progress {
 
 	public interface IEpochChangeListener {
 

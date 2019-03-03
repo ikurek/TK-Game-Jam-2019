@@ -1,43 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using ChronoPuzzle.Puzzles.Modern;
+using ChronoPuzzle.Scripts;
+using ChronoPuzzle.World.Player;
 using UnityEngine;
 
-public class SocketInteraction : InteractiveObject
-{
-    [SerializeField]
-    private GameObject bulb;
+namespace ChronoPuzzle.World.Interactive {
 
-    [SerializeField]
-    private GameObject switchGo;
-    
-    private bool pickable = false;
-    
-    public override GameObject pickup(GameObject parentGameObject)
+    public class SocketInteraction : InteractiveObject
     {
-        if (pickable)
-        {
-            base.playSound("Sound/pick_wood");
-            return base.pickup(parentGameObject);
-        }
-        else
-        {
-            return null;
-        }
-    }
-    
-    public override void activate(GameObject activator)
-    {
-        base.activate(activator);
+        [SerializeField]
+        private GameObject bulb;
 
-        if(activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.zarowka)
+        [SerializeField]
+        private GameObject switchGo;
+    
+        private bool pickable = false;
+    
+        public override GameObject pickup(GameObject parentGameObject)
         {
-            base.playSound("Sound/lightbulb_screw");
-            bulb.SetActive(true);
-            switchGo.GetComponent<LightBulbsPuzzle>().allBulbsAtSocket();
-            activator.GetComponent<PlayerObjectInteractionScript>().heldObject.SetActive(false);
-            activator.GetComponent<PlayerObjectInteractionScript>().heldObject = null;
+            if (pickable)
+            {
+                base.playSound("Sound/pick_wood");
+                return base.pickup(parentGameObject);
+            }
+            else
+            {
+                return null;
+            }
         }
+    
+        public override void activate(GameObject activator)
+        {
+            base.activate(activator);
+
+            if(activator.GetComponent<PlayerObjectInteractionScript>().heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.zarowka)
+            {
+                base.playSound("Sound/lightbulb_screw");
+                bulb.SetActive(true);
+                switchGo.GetComponent<LightBulbsPuzzle>().allBulbsAtSocket();
+                activator.GetComponent<PlayerObjectInteractionScript>().heldObject.SetActive(false);
+                activator.GetComponent<PlayerObjectInteractionScript>().heldObject = null;
+            }
         
         
+        }
     }
+
 }

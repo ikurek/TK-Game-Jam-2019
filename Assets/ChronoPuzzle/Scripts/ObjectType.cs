@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace ChronoPuzzle.Scripts {
 
-public enum ObjectType
-{
-    nic,
-    sol,
-    glina,
-    zarowka,
-    garnek
+    public enum ObjectType
+    {
+        nic,
+        sol,
+        glina,
+        zarowka,
+        garnek
+    }
+
 }

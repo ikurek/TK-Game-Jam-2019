@@ -1,72 +1,76 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using ChronoPuzzle.Scripts;
+using ChronoPuzzle.World.Player;
 using UnityEngine;
 
-public class BonfireScript : InteractiveObject
-{
+namespace ChronoPuzzle.World.Interactive {
 
-    [SerializeField] private ParticleSystem fire;
-    [SerializeField] private Sprite PotSprite;
-    [SerializeField] private AudioClip fireBurning;
+    public class BonfireScript : InteractiveObject
+    {
+
+        [SerializeField] private ParticleSystem fire;
+        [SerializeField] private Sprite PotSprite;
+        [SerializeField] private AudioClip fireBurning;
 
 
-    public bool pickable = false;
+        public bool pickable = false;
     
-    public override GameObject pickup(GameObject parentGameObject)
-    {
-        if (pickable)
+        public override GameObject pickup(GameObject parentGameObject)
         {
-            base.playSound("Sound/pick_wood");
-            return base.pickup(parentGameObject);
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public override GameObject drop(GameObject exParentGameObject)
-    {
-        if (pickable)
-        {
-            base.playSound("Sound/drop_wood");
-            return base.drop(exParentGameObject);
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public override void activate(GameObject activator)
-    {
-        if (!isActive())
-        {
-            base.activate(activator);
-
-            LightPoint_ShaderScript pointLightScript = GameObject.FindGameObjectWithTag("pointLight").GetComponent<LightPoint_ShaderScript>();
-
-            pointLightScript.target2 = transform;
-            pointLightScript.size1 = 0.1f;
-            pointLightScript.size2 = 0.1f;
-
-            transform.GetComponent<AudioSource>().Play();
-
-            fire.gameObject.SetActive(true);
-            pickable = false;
-        }
-        else
-        {
-            GameObject heldObject = activator.GetComponent<PlayerObjectInteractionScript>().heldObject;
-
-            if (heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.glina)
+            if (pickable)
             {
-                heldObject.GetComponent<SpriteRenderer>().sprite = PotSprite;
-                heldObject.GetComponent<ObjectTypeClass>().objectType = ObjectType.garnek;
+                base.playSound("Sound/pick_wood");
+                return base.pickup(parentGameObject);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public override GameObject drop(GameObject exParentGameObject)
+        {
+            if (pickable)
+            {
+                base.playSound("Sound/drop_wood");
+                return base.drop(exParentGameObject);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public override void activate(GameObject activator)
+        {
+            if (!isActive())
+            {
+                base.activate(activator);
+
+                LightPoint_ShaderScript pointLightScript = GameObject.FindGameObjectWithTag("pointLight").GetComponent<LightPoint_ShaderScript>();
+
+                pointLightScript.target2 = transform;
+                pointLightScript.size1 = 0.1f;
+                pointLightScript.size2 = 0.1f;
+
+                transform.GetComponent<AudioSource>().Play();
+
+                fire.gameObject.SetActive(true);
+                pickable = false;
+            }
+            else
+            {
+                GameObject heldObject = activator.GetComponent<PlayerObjectInteractionScript>().heldObject;
+
+                if (heldObject.GetComponent<ObjectTypeClass>().objectType == ObjectType.glina)
+                {
+                    heldObject.GetComponent<SpriteRenderer>().sprite = PotSprite;
+                    heldObject.GetComponent<ObjectTypeClass>().objectType = ObjectType.garnek;
+
+                }
 
             }
 
         }
-
     }
+
 }

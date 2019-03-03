@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace World {
+namespace ChronoPuzzle.World {
 	
 	public class InputDispatcher : MonoBehaviour {
 		

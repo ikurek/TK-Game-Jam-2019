@@ -1,10 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ObjectTypeClass : MonoBehaviour
-{
+namespace ChronoPuzzle.Scripts {
 
-    public ObjectType objectType;
+    public class ObjectTypeClass : MonoBehaviour
+    {
+
+        public ObjectType objectType;
     
+    }
+
 }

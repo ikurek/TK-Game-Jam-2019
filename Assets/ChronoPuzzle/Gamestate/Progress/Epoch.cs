@@ -1,6 +1,4 @@
-using System;
-
-namespace Progress {
+namespace ChronoPuzzle.Gamestate.Progress {
 	
 	public enum Epoch {
 		Intro,
