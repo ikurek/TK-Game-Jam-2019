@@ -20,10 +20,6 @@ namespace ChronoPuzzle.World.Vision {
 
         private FadeController() { }
 
-        private void Start() {
-            IsFinish = false;
-        }
-
         public void FadeIn(float _fadeTime) {
             SetColor(m_color);
             StartCoroutine(COROUTINE_NAME, -(_fadeTime));
@@ -116,6 +112,8 @@ namespace ChronoPuzzle.World.Vision {
                     m_fadePanel.rectTransform.anchorMin = Vector2.zero;
                     m_fadePanel.rectTransform.anchorMax = Vector2.one;
                     m_fadePanel.rectTransform.sizeDelta = Vector2.zero;
+                    
+                    m_instance.IsFinish = true;
                 }
                 return m_instance;
             }

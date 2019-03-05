@@ -1,8 +1,10 @@
-﻿using ChronoPuzzle.Puzzles.Modern;
+﻿using System.Linq;
+using ChronoPuzzle.Puzzles.Modern;
 using ChronoPuzzle.World.Environment;
 using ChronoPuzzle.World.Interactive;
 using ChronoPuzzle.World.Player;
 using ChronoPuzzle.World.Vision;
+using Outfrost;
 using UnityEngine;
 
 namespace ChronoPuzzle.Gamestate.Progress {
@@ -12,53 +14,48 @@ namespace ChronoPuzzle.Gamestate.Progress {
         private RoomManager roomManager;
         private GameObject playerCharacter;
         private Epoch currentEpoch = Epoch.Intro;
+        private EpochChangeListenerScript[] listenerScripts;
 
-        void Start() {
-            roomManager = FindObjectOfType<RoomManager>();
-            if (roomManager == null) {
-                Debug.LogError("No RoomManager found in scene");
+        private void Start() {
+            playerCharacter = GameObject.FindGameObjectWithTag("Player");
+            if (playerCharacter == null) {
+                Debug.LogError("No player object found in scene");
             }
-            playerCharacter = GameObject.Find("Player Character");
-            updateTheme();
-            print("Currently running epoch " + EpochUtil.epochName(currentEpoch));
-            tryChangeEpoch();
-        }
-
-        void lockPlayerAndChangeUI()
-        {
-            playerCharacter.SetActive(false);
-        
-            FadeController.Instance.FadeOut(1.0f, Color.black, () =>
-            {
-                updateTheme();
-                FadeController.Instance.FadeIn(1.0f, Color.black);
             
-            });
+            listenerScripts = Resources.FindObjectsOfTypeAll<EpochChangeListenerScript>()
+                    .Where(obj => ! Util.IsPrefab(obj.gameObject))
+                    .ToArray();
+            
+            broadcastEpochChange();
+            print("Currently running epoch " + EpochUtil.epochName(currentEpoch));
+            
+            advanceIfPossible();
         }
 
-        void updateTheme()
+        public void advanceIfPossible()
         {
-            roomManager.prepareEpoch(currentEpoch);
-
-        }
-
-        public void tryChangeEpoch()
-        {
-            if (checkCurrentEpochChangeConditions())
+            if (canAdvance() && FadeController.Instance.IsFinish) // TODO Ensure better concurrency safety for FadeController
             {
-                changeEpoch();
+                print("Currently running epoch " + EpochUtil.epochName(currentEpoch) + ", advancing");
+                playerCharacter.SetActive(false);
+        
+                FadeController.Instance.FadeOut(1.0f, Color.black, () =>
+                {
+                    currentEpoch = EpochUtil.next(currentEpoch);
+                    broadcastEpochChange();
+                    print("Currently running epoch " + EpochUtil.epochName(currentEpoch));
+                    FadeController.Instance.FadeIn(1.0f, Color.black);
+                });
             }
         }
 
-        public void changeEpoch()
-        {   
-            lockPlayerAndChangeUI();
-            currentEpoch = EpochUtil.next(currentEpoch);
-            print("Currently running epoch " + EpochUtil.epochName(currentEpoch));
+        private void broadcastEpochChange() {
+            foreach (var script in listenerScripts) {
+                script.epochChanged(currentEpoch);
+            }
         }
 
-        bool checkCurrentEpochChangeConditions()
-        {
+        private bool canAdvance() {
             switch (currentEpoch) {
                 case Epoch.Intro: return isIntroEpochFinished();
                 case Epoch.First: return isFirstEpochFinished();
@@ -67,38 +64,23 @@ namespace ChronoPuzzle.Gamestate.Progress {
             }
         }
 
-        bool isIntroEpochFinished() {
+        private bool isIntroEpochFinished() {
             return true;
         }
 
-        bool isFirstEpochFinished() {
-            //return true; // Test
-        
-            if (GameObject.Find("rynna starozytnosc").GetComponent<RynnaScript>().isActive())
-            {
-                GameObject.Find("Player Character").GetComponent<PlayerObjectInteractionScript>().heldObject.SetActive(false);
-                GameObject.Find("Player Character").GetComponent<PlayerObjectInteractionScript>().heldObject = null;
-                return true;
-            }
-            else
-            {
+        private bool isFirstEpochFinished() {
+            if (! GameObject.Find("rynna starozytnosc").GetComponent<RynnaScript>().isActive()) {
                 return false;
             }
-        
+            
+            GameObject.Find("Player Character").GetComponent<PlayerObjectInteractionScript>().heldObject.SetActive(false);
+            GameObject.Find("Player Character").GetComponent<PlayerObjectInteractionScript>().heldObject = null;
+            return true;
+
         }
 
-        public bool isSecondEpochFinished()
-        {
-            Debug.Log("dupa");
-            if (GameObject.Find("switches").GetComponent<LightBulbsPuzzle>().checkAllSocketsForWin())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        
+        private bool isSecondEpochFinished() {
+            return GameObject.Find("switches").GetComponent<LightBulbsPuzzle>().checkAllSocketsForWin();
         }
 
     }

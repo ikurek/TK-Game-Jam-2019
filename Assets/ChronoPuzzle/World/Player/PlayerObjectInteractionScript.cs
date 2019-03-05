@@ -21,7 +21,7 @@ namespace ChronoPuzzle.World.Player {
         
             inputDispatcher.AddKeyDownHandler(KeyCode.F, (KeyCode) => {
                 activateLastCollidedInteractive();
-                GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
+                GameObject.Find("ProgressObject").GetComponent<ProgressController>().advanceIfPossible();
             });
 
             inputDispatcher.AddKeyDownHandler(KeyCode.E, (KeyCode) => {
@@ -33,7 +33,7 @@ namespace ChronoPuzzle.World.Player {
                         dropHeldObject();
                     }
                 }
-                GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
+                GameObject.Find("ProgressObject").GetComponent<ProgressController>().advanceIfPossible();
             });
         }
 

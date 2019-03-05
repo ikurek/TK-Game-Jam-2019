@@ -218,7 +218,10 @@ namespace ChronoPuzzle.Puzzles.Modern {
 
             }
 
-            GameObject.Find("ProgressObject").GetComponent<ProgressController>().tryChangeEpoch();
+            // really?
+            //GameObject.Find("ProgressObject").GetComponent<ProgressController>().advanceIfPossible();
+            
+            
             //checkAllSocketsForWin();
         }
     }

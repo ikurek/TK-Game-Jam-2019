@@ -3,20 +3,24 @@ using UnityEngine;
 
 namespace ChronoPuzzle.World.Environment {
 
-	public class RoomManager : MonoBehaviour {
-		public GameObject firstEpochScenery;
-		public GameObject secondEpochScenery;
-		public GameObject thirdEpochScenery;
-		public GameObject fourthEpochScenery;
-		public GameObject finalEpochScenery;
+	public class RoomManager : MonoBehaviour, IEpochChangeListener {
+		
+		[SerializeField]
+		private GameObject firstEpochScenery;
+		[SerializeField]
+		private GameObject secondEpochScenery;
+		[SerializeField]
+		private GameObject thirdEpochScenery;
+		[SerializeField]
+		private GameObject fourthEpochScenery;
+		[SerializeField]
+		private GameObject finalEpochScenery;
 
-		private EpochChangeListenerScript[] listenerScripts;
-
-		private void Awake() {
-			listenerScripts = FindObjectsOfType<EpochChangeListenerScript>();
+		public void epochChanged(Epoch epoch) {
+			prepareEpoch(epoch);
 		}
 
-		public void prepareEpoch(Epoch epoch) {
+		private void prepareEpoch(Epoch epoch) {
 			// hide environment
 			firstEpochScenery.SetActive(false);
 			secondEpochScenery.SetActive(false);
@@ -42,13 +46,8 @@ namespace ChronoPuzzle.World.Environment {
 					finalEpochScenery.SetActive(true);
 					break;
 			}
-
-			// tell everything to enable or disable itself
-			foreach (var script in listenerScripts) {
-				script.epochChanged(epoch);
-			}
-
 		}
+
 	}
 
 }
