@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -727,6 +727,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3453b58049c8db44c90321e7e0ce19d3, type: 3}
+--- !u!114 &1273020113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6084827531367225054, guid: 3453b58049c8db44c90321e7e0ce19d3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1273020112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf59f7cd9f5648508eb6bd04b8a1f86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1341335524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1138,12 +1150,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa14d2fa29b013153916d2cba1187baf, type: 3}
---- !u!4 &1672211450 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3360656258475136561, guid: 3453b58049c8db44c90321e7e0ce19d3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1273020112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1805344884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1517,6 +1523,6 @@ PrefabInstance:
         type: 3}
       propertyPath: bonfire
       value: 
-      objectReference: {fileID: 1672211450}
+      objectReference: {fileID: 1273020113}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 067c50661c23eaaaabc4e3730697187c, type: 3}

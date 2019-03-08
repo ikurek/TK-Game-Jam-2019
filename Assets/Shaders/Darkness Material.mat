@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Darkness Material
-  m_Shader: {fileID: 4800000, guid: 1cefa19b5c5208c9d982d6dda5194e70, type: 3}
+  m_Shader: {fileID: 4800000, guid: fc0cb71a914ce0340a7a7f932be5cdd0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -62,7 +62,14 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _bonfireLightInnerRadius: 1
+    - _bonfireLightOuterRadius: 1.75
+    - _cameraSize: 8
+    - _playerLightInnerRadius: 0.25
+    - _playerLightOuterRadius: 0.75
     m_Colors:
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _bonfirePosition: {r: 4, g: -4, b: 0, a: 0}
+    - _playerPosition: {r: 0, g: 4, b: 0, a: 0}

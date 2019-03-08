@@ -1,3 +1,4 @@
+using ChronoPuzzle.World.Interactive;
 using UnityEngine;
 
 namespace ChronoPuzzle.World.Vision {
@@ -13,7 +14,7 @@ namespace ChronoPuzzle.World.Vision {
 		[SerializeField]
 		private Transform playerCharacter;
 		[SerializeField]
-		private Transform bonfire;
+		private BonfireScript bonfire;
 		
 		private void Start() {
 			if (! material.HasProperty(playerPositionName) || ! material.HasProperty(bonfirePositionName)) {
@@ -24,7 +25,7 @@ namespace ChronoPuzzle.World.Vision {
 
 		private void Update() {
 			material.SetVector(playerPositionName, playerCharacter.position);
-			material.SetVector(bonfirePositionName, bonfire.position);
+			material.SetVector(bonfirePositionName, bonfire.transform.position);
 		}
 
 	}
